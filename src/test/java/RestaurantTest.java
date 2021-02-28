@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.spy;
@@ -64,4 +65,10 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void should_return_cost_of_all_selectedItems() {
+        List<Item> selectedList = restaurant.getMenu();
+        int costOfSelectedItems = restaurant.getTotalCostOfSelectedItems(selectedList);
+        assertEquals(388,costOfSelectedItems);
+    }
 }

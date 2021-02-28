@@ -65,6 +65,9 @@ public class Restaurant {
     }
 
     public int getTotalCostOfSelectedItems(List<Item> selectedItems) {
-        return 0;
+
+        return selectedItems.stream().map(item -> findItemByName(item.getName()))
+                .mapToInt(Item::getPrice)
+                .sum();
     }
 }

@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,5 +71,12 @@ class RestaurantTest {
         List<Item> selectedList = restaurant.getMenu();
         int costOfSelectedItems = restaurant.getTotalCostOfSelectedItems(selectedList);
         assertEquals(388,costOfSelectedItems);
+    }
+
+    @Test
+    public void should_return_cost_zero_If_List_is_Empty() {
+        List<Item> selectedList = Collections.emptyList();
+        int costOfSelectedItems = restaurant.getTotalCostOfSelectedItems(selectedList);
+        assertEquals(0,costOfSelectedItems);
     }
 }
